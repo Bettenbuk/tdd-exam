@@ -8,6 +8,6 @@ public class VehicleTicketValidator {
     }
 
     public boolean isValid(String ticket){
-        return true;
+        return ticket.startsWith(vehicleFlightNumber);
     }
 }
