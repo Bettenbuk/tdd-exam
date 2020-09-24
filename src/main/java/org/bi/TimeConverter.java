@@ -14,4 +14,8 @@ public class TimeConverter {
         String minute = String.format(TWO_DIGIT_FORMAT,time.getMinute());
         return year+month+day+hour+minute;
     }
+
+    public static String getNowInMetroTimeFormat() {
+        return convertToMetroTimeFormat(LocalDateTime.now());
+    }
 }
