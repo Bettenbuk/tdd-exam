@@ -6,7 +6,7 @@ public class MetroTicketValidator {
     private static final int VALIDATION_TIME = 80;
 
     public static boolean isValid(String ticket) {
-        return !isExpired(ticket);
+        return !isExpired(ticket) && !isFromFuture(ticket);
     }
 
     private static boolean isExpired(String ticket) {
@@ -14,5 +14,12 @@ public class MetroTicketValidator {
 
         return ticketUsingStartTime.compareTo(
                 TimeConverter.getLastValidTimeInMetroTimeFormat(VALIDATION_TIME )) < 0;
+    }
+
+    private static boolean isFromFuture(String ticket) {
+        String ticketUsingStartTime = ticket.substring(ticket.length() - TIME_LENGTH_IN_TICKET);
+
+        return ticketUsingStartTime.compareTo(
+                TimeConverter.getLastValidTimeInMetroTimeFormat(0)) > 0;
     }
 }

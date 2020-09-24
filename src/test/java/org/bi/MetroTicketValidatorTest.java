@@ -14,4 +14,11 @@ public class MetroTicketValidatorTest {
         String ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
         Assert.assertFalse(MetroTicketValidator.isValid(ticket));
     }
+
+    @Test
+    public void ticketFromPast(){
+        LocalDateTime ticketUsingStartTime= LocalDateTime.now().plusMinutes(1);
+        String ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
+        Assert.assertFalse(MetroTicketValidator.isValid(ticket));
+    }
 }
