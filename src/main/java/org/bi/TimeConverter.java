@@ -25,20 +25,15 @@ public class TimeConverter {
     }
 
     public static String convertToVehicleTimeFormat(LocalDateTime time) {
-        String month = String.format(TWO_DIGIT_FORMAT,time.getMonthValue());
-        String day = String.format(TWO_DIGIT_FORMAT,time.getDayOfMonth());
-        String hour = String.format(TWO_DIGIT_FORMAT,time.getHour());
-        String minute = String.format(TWO_DIGIT_FORMAT,time.getMinute());
-        return month+day+hour+minute;
+        return convertToMetroTimeFormat(time).substring(1);
     }
 
     public static String getLastValidTimeInVehicleTimeFormat(int timeCorrection) {
-        LocalDateTime expiredTime = LocalDateTime.now().minusMinutes(timeCorrection);
-        return convertToVehicleTimeFormat(expiredTime);
+        return getLastValidTimeInMetroTimeFormat(timeCorrection).substring(1);
     }
 
     public static String getNowInVehicleTimeFormat() {
-        return getLastValidTimeInVehicleTimeFormat(0);
+        return getNowInMetroTimeFormat().substring(1);
     }
 
     private TimeConverter(){}
