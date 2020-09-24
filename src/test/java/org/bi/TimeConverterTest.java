@@ -13,9 +13,9 @@ public class TimeConverterTest {
     }
 
     @Test
-    public void getNowInMetroTimeFormatTest(){
+    public void getLastValidTimeInMetroTimeFormatTest(){
         String starTime = TimeConverter.convertToMetroTimeFormat(LocalDateTime.now());
-        String checkTime = TimeConverter.getNowInMetroTimeFormat();
+        String checkTime = TimeConverter.getLastValidTimeInMetroTimeFormat(0);
         String endTime = TimeConverter.convertToMetroTimeFormat(LocalDateTime.now());
         Assert.assertNotEquals(1, checkTime.compareTo(starTime));
         Assert.assertNotEquals(-1, checkTime.compareTo(endTime));

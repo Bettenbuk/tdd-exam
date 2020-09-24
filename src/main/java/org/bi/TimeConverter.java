@@ -15,7 +15,8 @@ public class TimeConverter {
         return year+month+day+hour+minute;
     }
 
-    public static String getNowInMetroTimeFormat() {
-        return convertToMetroTimeFormat(LocalDateTime.now());
+    public static String getLastValidTimeInMetroTimeFormat(int timeCorrection) {
+        LocalDateTime expiredTime = LocalDateTime.now().minusMinutes(timeCorrection);
+        return convertToMetroTimeFormat(expiredTime);
     }
 }
