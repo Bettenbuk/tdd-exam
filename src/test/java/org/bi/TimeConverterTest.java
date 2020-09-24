@@ -20,4 +20,13 @@ public class TimeConverterTest {
         Assert.assertNotEquals(1, checkTime.compareTo(starTime));
         Assert.assertNotEquals(-1, checkTime.compareTo(endTime));
     }
+
+    @Test
+    public void getNowInMetroTimeFormatTest(){
+        String starTime = TimeConverter.convertToMetroTimeFormat(LocalDateTime.now());
+        String checkTime = TimeConverter.getNowInMetroTimeFormat();
+        String endTime = TimeConverter.convertToMetroTimeFormat(LocalDateTime.now());
+        Assert.assertNotEquals(1, checkTime.compareTo(starTime));
+        Assert.assertNotEquals(-1, checkTime.compareTo(endTime));
+    }
 }

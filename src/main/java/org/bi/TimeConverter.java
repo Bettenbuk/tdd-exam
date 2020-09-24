@@ -19,4 +19,10 @@ public class TimeConverter {
         LocalDateTime expiredTime = LocalDateTime.now().minusMinutes(timeCorrection);
         return convertToMetroTimeFormat(expiredTime);
     }
+
+    public static String getNowInMetroTimeFormat() {
+        return getLastValidTimeInMetroTimeFormat(0);
+    }
+
+    private TimeConverter(){}
 }

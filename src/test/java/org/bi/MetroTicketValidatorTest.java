@@ -7,18 +7,21 @@ import java.time.LocalDateTime;
 public class MetroTicketValidatorTest {
 
     private static final int VALIDATION_TIME = 80;
+    private MetroTicketValidator metroTicketValidator = new MetroTicketValidator();
+    private LocalDateTime ticketUsingStartTime;
+    private String ticket;
 
     @Test
     public void ticketIsExpired(){
-        LocalDateTime ticketUsingStartTime= LocalDateTime.now().minusMinutes(VALIDATION_TIME+1);
-        String ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
-        Assert.assertFalse(MetroTicketValidator.isValid(ticket));
+        ticketUsingStartTime= LocalDateTime.now().minusMinutes(VALIDATION_TIME+1);
+        ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
+        Assert.assertFalse(metroTicketValidator.isValid(ticket));
     }
 
     @Test
     public void ticketFromPast(){
-        LocalDateTime ticketUsingStartTime= LocalDateTime.now().plusMinutes(1);
-        String ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
-        Assert.assertFalse(MetroTicketValidator.isValid(ticket));
+        ticketUsingStartTime= LocalDateTime.now().plusMinutes(1);
+        ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
+        Assert.assertFalse(metroTicketValidator.isValid(ticket));
     }
 }
