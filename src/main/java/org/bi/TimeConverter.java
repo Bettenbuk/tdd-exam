@@ -9,6 +9,7 @@ public class TimeConverter {
     public static String convertToMetroTimeFormat(LocalDateTime time) {
         String year = String.valueOf(Integer.toString(time.getYear()).charAt(3));
         String month = String.format(TWO_DIGIT_FORMAT,time.getMonthValue());
-        return year+month;
+        String day = String.format(TWO_DIGIT_FORMAT,time.getDayOfMonth());
+        return year+month+day;
     }
 }
