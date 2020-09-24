@@ -24,5 +24,22 @@ public class TimeConverter {
         return getLastValidTimeInMetroTimeFormat(0);
     }
 
+    public static String convertToVehicleTimeFormat(LocalDateTime time) {
+        String month = String.format(TWO_DIGIT_FORMAT,time.getMonthValue());
+        String day = String.format(TWO_DIGIT_FORMAT,time.getDayOfMonth());
+        String hour = String.format(TWO_DIGIT_FORMAT,time.getHour());
+        String minute = String.format(TWO_DIGIT_FORMAT,time.getMinute());
+        return month+day+hour+minute;
+    }
+
+    public static String getLastValidTimeInVehicleTimeFormat(int timeCorrection) {
+        LocalDateTime expiredTime = LocalDateTime.now().minusMinutes(timeCorrection);
+        return convertToVehicleTimeFormat(expiredTime);
+    }
+
+    public static String getNowInVehicleTimeFormat() {
+        return getLastValidTimeInVehicleTimeFormat(0);
+    }
+
     private TimeConverter(){}
 }
