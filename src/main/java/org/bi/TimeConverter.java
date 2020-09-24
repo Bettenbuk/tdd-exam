@@ -10,6 +10,8 @@ public class TimeConverter {
         String year = String.valueOf(Integer.toString(time.getYear()).charAt(3));
         String month = String.format(TWO_DIGIT_FORMAT,time.getMonthValue());
         String day = String.format(TWO_DIGIT_FORMAT,time.getDayOfMonth());
-        return year+month+day;
+        String hour = String.format(TWO_DIGIT_FORMAT,time.getHour());
+        String minute = String.format(TWO_DIGIT_FORMAT,time.getMinute());
+        return year+month+day+hour+minute;
     }
 }
