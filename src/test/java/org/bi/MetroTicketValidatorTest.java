@@ -20,8 +20,22 @@ public class MetroTicketValidatorTest {
 
     @Test
     public void ticketFromPast(){
-        ticketUsingStartTime= LocalDateTime.now().plusMinutes(1);
+        ticketUsingStartTime = LocalDateTime.now().plusMinutes(1);
         ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
         Assert.assertFalse(metroTicketValidator.isValid(ticket));
+    }
+
+    @Test
+    public void validTicketInCaseLastMinute(){
+        ticketUsingStartTime = LocalDateTime.now().minusMinutes(VALIDATION_TIME - 1);
+        ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
+        Assert.assertTrue(metroTicketValidator.isValid(ticket));
+    }
+
+    @Test
+    public void validTicketInCaseImmediately(){
+        ticketUsingStartTime = LocalDateTime.now().minusMinutes(0);
+        ticket = "0643xxx"+TimeConverter.convertToMetroTimeFormat(ticketUsingStartTime);
+        Assert.assertTrue(metroTicketValidator.isValid(ticket));
     }
 }
